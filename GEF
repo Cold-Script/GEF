@@ -1,9 +1,8 @@
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 local Window = Library:NewWindow("• WinterClaws •")
 local Farm = Window:NewSection("Farm")
-Farm:CreateToggle("Money Farm", function(value)
-getgenv().FarmMoney = v
-while getgenv().FarmMoney do wait(0.5)
+Farm:CreateToggle("Money Farm", function(v)
+while v do wait(0.5)
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Money" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Money.CFrame
@@ -76,4 +75,8 @@ wait(0.2)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
+end)
+local TPlr = Window:NewSection("Teleport Players")
+TPlr:CreateButton("Đạt Vila", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.rechedmcvnGV.HumanoidRootPart.CFrame
 end)
