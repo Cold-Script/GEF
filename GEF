@@ -1,18 +1,79 @@
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 local Window = Library:NewWindow("• WinterClaws •")
-local Farm = Window:NewSection("Cày")
-Farm:CreateTextbox("Thời Gian Cày",function(text)
-getgenv().CooldownFarm = v
-end)
-Farm:CreateToggle("Cày Tiền", function(value)
+local Farm = Window:NewSection("Farm")
+Farm:CreateToggle("Money Farm", function(value)
 getgenv().FarmMoney = v
-while getgenv().FarmMoney do wait(getgenv().CooldownFarm or 0)
+while getgenv().FarmMoney do wait(0.5)
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Money" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Money.CFrame
 wait(0.2)
 fireproximityprompt(v.ProximityPrompt)
 end
+end
+end
+end)
+local TP = Window:NewSection("Teleport")
+TP:CreateButton("Handgun", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Handgun" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Handgun.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Shootgun", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Shootgun" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Shootgun.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Hammer", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Hammer" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Hammer.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Crowbar", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Crowbar" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Crowbar.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Soda", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Soda" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Soda.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Bat", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Bat" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Bat.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Food", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Food" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Food.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
 end
 end
 end)
