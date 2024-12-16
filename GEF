@@ -1,0 +1,10 @@
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+local Window = Library:NewWindow("• WinterClaws •")
+local Farm = Window:NewSection("Cày")
+Farm:CreateTextbox("Thời Gian Cày",function(text)
+getgenv().CooldownFarm = v
+end)
+Farm:CreateToggle("Cày Tiền", function(value)
+getgenv().FarmMoney = v
+
+end)
