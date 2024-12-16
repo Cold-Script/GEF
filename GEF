@@ -13,9 +13,9 @@ end
 end
 end
 end)
-local Playerslist = {}
+Playerlist = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
-table.insert(Playerslist,v.Name)
+table.insert(Playerlist,v.Name)
 end
 Farm:CreateDropdown("STP Players", {Playerslist}, 0, function(v)
 getgenv().TPlr = v
@@ -24,7 +24,6 @@ Farm:CreateButton("Update Dropdown",function()
 table.clear(Playerslist)
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
 table.insert(Playerslist,v.Name)
-end
 end
 end)
 Farm:CreateToggle("TP Players", function(v)
@@ -39,6 +38,7 @@ end
 end)
 end
 end
+end)
 end)
 local TP = Window:NewSection("Teleport")
 TP:CreateButton("Handgun", function()
@@ -113,3 +113,11 @@ fireproximityprompt(v.ProximityPrompt)
 end
 end
 end)
+
+
+
+
+
+
+
+
