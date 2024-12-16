@@ -1,9 +1,9 @@
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 local Window = Library:NewWindow("• WinterClaws •")
-local Farm = Window:NewSection("Farm")
+local Farm = Window:NewSection("Misc")
 Farm:CreateToggle("Money Farm", function(v)
 getgenv().FarmMoney = v
-while getgenv().FarmMoney do wait(1)
+while getgenv().FarmMoney do 
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Money" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Money.CFrame
@@ -13,9 +13,36 @@ end
 end
 end
 end)
+local Playerslist = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+table.insert(Playerslist,v.Name)
+end
+Farm:CreateDropdown("STP Players", {Playerslist}, 0, function(v)
+getgenv().TPlr = v
+end)
+Farm:CreateButton("Update Dropdown",function()
+table.clear(Playerslist)
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+table.insert(Playerslist,v.Name)
+end
+end
+end)
+Farm:CreateToggle("TP Players", function(v)
+getgenv().ETPLr = v
+spawn(function()
+while wait() do
+if getgenv().ETPLr then
+pcall(function()
+if game.Players:FindFirstChild(getgenv().TPLr) then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[getgenv().TPlr].Character.HumanoidRootPart.CFrame
+end
+end)
+end
+end
+end)
 local TP = Window:NewSection("Teleport")
 TP:CreateButton("Handgun", function()
-for _, v in  pairs(workspace:GetDescendants()) do
+for _, v in pairs(workspace:GetDescendants()) do
 if v.Name == "Handgun" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Handgun.CFrame
 wait(0.2)
@@ -23,10 +50,10 @@ fireproximityprompt(v.ProximityPrompt)
 end
 end
 end)
-TP:CreateButton("Shootgun", function()
+TP:CreateButton("Shotgun", function()
 for _, v in  pairs(workspace:GetDescendants()) do
-if v.Name == "Shootgun" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Shootgun.CFrame
+if v.Name == "Shotgun" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Shotgun.CFrame
 wait(0.2)
 fireproximityprompt(v.ProximityPrompt)
 end
@@ -45,6 +72,15 @@ TP:CreateButton("Crowbar", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Crowbar" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Crowbar.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Shells", function()
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Shells" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Shells.CFrame
 wait(0.2)
 fireproximityprompt(v.ProximityPrompt)
 end
@@ -76,8 +112,4 @@ wait(0.2)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
-end)
-local TPlr = Window:NewSection("Teleport Players")
-TP:CreateButton("Đạt Vila", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.rechedmcvnGV.Character.HumanoidRootPart.CFrame)
 end)
