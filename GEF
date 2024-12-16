@@ -6,5 +6,13 @@ getgenv().CooldownFarm = v
 end)
 Farm:CreateToggle("Cày Tiền", function(value)
 getgenv().FarmMoney = v
-
+while getgenv().FarmMoney do wait(getgenv().CooldownFarm or 0)
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Money" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Money.CFrame
+wait(0.2)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end
 end)
