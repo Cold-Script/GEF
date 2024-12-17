@@ -11,6 +11,22 @@ fireproximityprompt(v.ProximityPrompt)
 end
 end
 end)
+Farm:CreateButton("Invisible Plank",function(v)
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Plank" then
+v.Transparency = 1
+v.CanCollide = false
+end
+end
+end)
+Farm:CreateButton("Uninvisible Plank",function(v)
+for _, v in  pairs(workspace:GetDescendants()) do
+if v.Name == "Plank" then
+v.Transparency = 0
+v.CanCollide = true
+end
+end
+end)
 local TP = Window:NewSection("Teleport")
 TP:CreateButton("GPS", function()
 for _, v in pairs(workspace:GetDescendants()) do
@@ -128,7 +144,7 @@ if child.Parent.Name == "Pickups" then
 LibraryESP:AddESP(child, child.Name, Color3.new(0,1), 20, "Items")
 end
 end
-local ItemsESP = workspace.ChildAdded:Connect(function(child)
+local ItemsESP = workspace.Pickups.ChildAdded:Connect(function(child)
 if child.Parent.Name == "Pickups" then
 LibraryESP:AddESP(child, child.Name, Color3.new(0,1), 20, "Items")
 end
@@ -144,7 +160,7 @@ if child.Parent.Name == "GEFs" then
 LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEFs")
 end
 end
-local GEFsESP = workspace.ChildAdded:Connect(function(child)
+local GEFsESP = workspace.GEFs.ChildAdded:Connect(function(child)
 if child.Parent.Name == "GEFs" then
 LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEFs")
 end
