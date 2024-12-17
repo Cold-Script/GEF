@@ -4,7 +4,7 @@ local Farm = Window:NewSection("Misc")
 Farm:CreateToggle("Money Farm", function(v)
 getgenv().FarmMoney = v
 task.spawn(function()
-while wait(0.5) do 
+while wait() do 
 if getgenv().FarmMoney then
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Money" then
@@ -17,27 +17,14 @@ end
 end
 end)
 end)
-local Playerlist = {}
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-table.insert(Playerlist,v.Name)
-end
-Farm:CreateDropdown("STP Players", {Playerslist}, 0, function(v)
-getgenv().TPlr = v
-end)
-Farm:CreateButton("Update Dropdown",function()
-table.clear(Playerslist)
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-table.insert(Playerslist,v.Name)
-end
-end)
 Farm:CreateToggle("TP Players", function(v)
 getgenv().ETPLr = v
 spawn(function()
 while wait() do
 if getgenv().ETPLr then
 pcall(function()
-if game.Players:FindFirstChild(getgenv().TPLr) then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[getgenv().TPlr].Character.HumanoidRootPart.CFrame
+if game.Players:FindFirstChild("rechedmcvnGV") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players["rechedmcvnGV"].Character.HumanoidRootPart.CFrame
 end
 end)
 end
