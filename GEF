@@ -1,5 +1,5 @@
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
-local Window = Library:NewWindow("• WinterClaws •")
+local Window = Library:NewWindow("• WinterClaws | GEF •")
 local Farm = Window:NewSection("Misc")
 Farm:CreateToggle("Money Farm", function(v)
 getgenv().FarmMoney = v
