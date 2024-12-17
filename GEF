@@ -158,17 +158,17 @@ ESP:CreateToggle("GEFs",function(v)
 if v then
 for _, child in pairs(workspace:GetDescendants()) do
 if child.Parent.Name == "GEFs" then
-LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEFs")
+LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEF")
 end
 end
 local GEFsESP = workspace.GEFs.ChildAdded:Connect(function(child)
 if child.Parent.Name == "GEFs" then
-LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEFs")
+LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEF")
 end
 end)
 else
 GEFsESP:Disconnect()
-LibraryESP:Delete("GEFs")
+LibraryESP:Delete("GEF")
 end
 end)
 
