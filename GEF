@@ -1,42 +1,58 @@
+local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Cold-Script/ESPBETA/refs/heads/main/Esp.lua"))()
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 local Window = Library:NewWindow("• WinterClaws | GEF •")
 local Farm = Window:NewSection("Misc")
-Farm:CreateToggle("Money Farm", function(v)
-getgenv().FarmMoney = v
-task.spawn(function()
-while wait() do 
-if getgenv().FarmMoney then
+Farm:CreateButton("Money Farm", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Money" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Money.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
-end
-end
-end)
-end)
-Farm:CreateToggle("TP Players", function(v)
-getgenv().ETPLr = v
-spawn(function()
-while wait() do
-if getgenv().ETPLr then
-pcall(function()
-if game.Players:FindFirstChild("rechedmcvnGV") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players["rechedmcvnGV"].Character.HumanoidRootPart.CFrame
-end
-end)
-end
-end
-end)
 end)
 local TP = Window:NewSection("Teleport")
+TP:CreateButton("GPS", function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "GPS" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.GPS.CFrame
+wait(1)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Bullets", function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "Bullets" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Bullets.CFrame
+wait(1)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Lantern", function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "Lantern" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Lantern.CFrame
+wait(1)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
+TP:CreateButton("Medkit", function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "Medkit" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Medkit.CFrame
+wait(1)
+fireproximityprompt(v.ProximityPrompt)
+end
+end
+end)
 TP:CreateButton("Handgun", function()
 for _, v in pairs(workspace:GetDescendants()) do
 if v.Name == "Handgun" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Handgun.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -45,7 +61,7 @@ TP:CreateButton("Shotgun", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Shotgun" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Shotgun.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -54,7 +70,7 @@ TP:CreateButton("Hammer", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Hammer" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Hammer.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -63,7 +79,7 @@ TP:CreateButton("Crowbar", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Crowbar" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Crowbar.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -72,7 +88,7 @@ TP:CreateButton("Shells", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Shells" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Shells.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -81,7 +97,7 @@ TP:CreateButton("Soda", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Soda" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Soda.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -90,7 +106,7 @@ TP:CreateButton("Bat", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Bat" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Bat.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
@@ -99,13 +115,44 @@ TP:CreateButton("Food", function()
 for _, v in  pairs(workspace:GetDescendants()) do
 if v.Name == "Food" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Pickups.Food.CFrame
-wait(0.2)
+wait(1)
 fireproximityprompt(v.ProximityPrompt)
 end
 end
 end)
-
-
+local ESP = Window:NewSection("ESP")
+ESP:CreateToggle("Items",function(v)
+if v then
+for _, child in pairs(workspace:GetDescendants()) do
+if child.Parent.Name == "Pickups" then
+ESP:AddESP(child, child.Name, Color3.new(0,1), 20, "Items")
+end
+end
+local ItemsESP = workspace.ChildAdded:Connect(function(child)
+if child.Parent.Name == "Pickups" then
+ESP:AddESP(child, child.Name, Color3.new(0,1), 20, "Items")
+end
+end)
+else
+ItemsESP:Disconnect()
+end
+end)
+ESP:CreateToggle("GEFs",function(v)
+if v then
+for _, child in pairs(workspace:GetDescendants()) do
+if child.Parent.Name == "GEFs" then
+ESP:AddESP(child, child.Name, Color3.new(1), 20, "GEFs")
+end
+end
+local GEFsESP = workspace.ChildAdded:Connect(function(child)
+if child.Parent.Name == "GEFs" then
+ESP:AddESP(child, child.Name, Color3.new(1), 20, "GEFs")
+end
+end)
+else
+GEFsESP:Disconnect()
+end
+end)
 
 
 
