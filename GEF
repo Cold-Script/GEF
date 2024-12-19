@@ -150,8 +150,8 @@ LibraryESP:AddESP(child, child.Name, Color3.new(0,1), 20, "Items")
 end
 end)
 else
-ItemsESP:Disconnect()
 LibraryESP:Delete("Items")
+ItemsESP:Disconnect()
 end
 end)
 ESP:CreateToggle("GEFs",function(v)
@@ -167,8 +167,8 @@ LibraryESP:AddESP(child, child.Name, Color3.new(1), 20, "GEF")
 end
 end)
 else
-GEFsESP:Disconnect()
 LibraryESP:Delete("GEF")
+GEFsESP:Disconnect()
 end
 end)
 
